@@ -25,9 +25,8 @@ Docker plugin
 * Add the dummy RSA private key as global credentials.
 
 * Configure Jenkins to communicate with the docker host using the following settings:
-
-..* Docker URL: tcp://192.168.10.10:2375
-..* Docker Image: jenkins-slave
-..* Remote Filing System Root: /home/jenkins
-..* Remote FS Root Mapping: /home/jenkins
-..* Credentials: The credentials added in step #4
+  * Docker URL: tcp://192.168.10.10:2375
+  * Docker Image: jenkins-slave
+  * Remote Filing System Root: /home/jenkins
+  * Remote FS Root Mapping: /home/jenkins
+  * Credentials: The credentials added in step #4
