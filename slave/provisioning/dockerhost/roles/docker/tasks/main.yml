@@ -1,0 +1,48 @@
+---
+- name: See if pip is installed already
+  command: "pip --version"
+  changed_when: false
+  failed_when: false
+  register: pip_installed
+
+- block:
+
+  - name: Download pip
+    get_url: url=https://bootstrap.pypa.io/get-pip.py
+             dest=/tmp
+
+  - name: Install pip
+    command: "python /tmp/get-pip.py"
+
+  - name: Remove file after install
+    file: path=/tmp/get-pip.py
+          state=absent
+
+  when: pip_installed.rc != 0
+
+- name: Ensure docker-py is installed
+  pip: name=docker-py
+
+- name: Make directories
+  file: path=/home/vagrant//{{ item }}
+        state=directory
+        owner=vagrant
+  with_items:
+    - slave
+    - slave/files
+
+- name: Copy slave Dockerfile.
+  copy: src=Dockerfile
+        dest=/home/vagrant/slave/Dockerfile
+
+- name: Copy resolv.conf and authorized keys
+  copy: src={{ item }}
+        dest=/home/vagrant/slave/files/{{ item }}
+  with_items:
+    - resolv.conf
+    - authorized_keys
+
+- name: Build slave image
+  docker_image:
+    path: /home/vagrant/slave/
+    name: jenkins-slave

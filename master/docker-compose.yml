@@ -1,0 +1,10 @@
+data:
+  build: ./data/
+
+master:
+  build: ./master/
+  volumes_from:
+    - data
+  ports:
+    - "50000:50000"
+    - "8080:8080"

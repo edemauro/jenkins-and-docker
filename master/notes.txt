@@ -1,0 +1,10 @@
+1. Install the following plugins:
+jcloud plugin
+docker plugin
+
+2. Add private ssh key to credentials
+
+3. Add vagrant docker host configuration
+host: tcp://192.168.10.10:2375
+image: jenkins-slave
+set FS root (both fields) as /home/jenkins
