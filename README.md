@@ -19,8 +19,8 @@ $ vagrant up
 ```
 
 * Install the following plugins:
-jCloud plugin
-Docker plugin
+  * jCloud plugin
+  * Docker plugin
 
 * Add the dummy RSA private key as global credentials.
 
