@@ -6,13 +6,13 @@ Vagrant along with Ansible is used to create a docker host in a virtual machine 
 
 ## Installation
 
-* Use Docker Compose to create the Jenkins master with a data container.
+* Use Docker Compose to create the Jenkins master with a data container from the master folder.
 
 ```bash
 $ docker-compose build
 ```
 
-* Create the docker host with Vagrant and Ansible.
+* Create the docker host with Vagrant and Ansible from the slave folder.
 
 ```bash
 $ vagrant up
