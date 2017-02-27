@@ -28,3 +28,8 @@ $ vagrant up
   * Remote Filing System Root: /home/jenkins
   * Remote FS Root Mapping: /home/jenkins
   * Image credentials: jenkins:jenkins
+
+
+## TODO
+
+* Get Docker Compose running in the DinD container.
