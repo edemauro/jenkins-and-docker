@@ -23,24 +23,18 @@
 - name: Ensure docker-py is installed
   pip: name=docker-py
 
-- name: Make directories
-  file: path=/home/vagrant//{{ item }}
+- name: Make directory
+  file: path=/home/vagrant/slave
         state=directory
         owner=vagrant
-  with_items:
-    - slave
-    - slave/files
 
-- name: Copy slave Dockerfile.
-  copy: src=Dockerfile
-        dest=/home/vagrant/slave/Dockerfile
-
-- name: Copy resolv.conf and authorized keys
-  copy: src={{ item }}
-        dest=/home/vagrant/slave/files/{{ item }}
+- name: Copy files
+  copy: src=dind-jenkins-slave-master/{{ item }}
+        dest=/home/vagrant/slave/{{ item }}
   with_items:
-    - resolv.conf
-    - authorized_keys
+    - Dockerfile
+    - wrapdocker
+    - jenkins-slave-startup.sh
 
 - name: Build slave image
   docker_image:
